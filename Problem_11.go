@@ -10,6 +10,7 @@ Note: You may not slant the container and n is at least 2.
 
 package main
 
+// 从两侧向中间逼近，木桶短短一边向内缩
 func maxArea(height []int) int {
 	left, right := 0, len(height)-1
 	s := 0
