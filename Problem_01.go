@@ -12,11 +12,13 @@ return [0, 1].
 package main
 
 func twoSum(nums []int, target int) []int {
+	// 定义map存储target - num的值
 	hashmap := make(map[int]int, len(nums))
 	for i, val := range nums {
 		if res, err := hashmap[val]; err {
 			return []int{res, i}
 		}
+		// 未找到合适的 将其加入map
 		hashmap[target-val] = i
 	}
 	return nil

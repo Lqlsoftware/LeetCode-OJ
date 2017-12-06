@@ -18,6 +18,7 @@ package main
 
 import "golang.org/x/tools/container/intsets"
 
+// 详见csdn:取两个排序数组中位数
 func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
 	len1, len2 := len(nums1), len(nums2)
 	if len1 > len2 {
