@@ -10,6 +10,7 @@ Output: 7 -> 0 -> 8
 */
 package main
 
+// ListNode list
 type ListNode struct {
 	Val  int
 	Next *ListNode
