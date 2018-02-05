@@ -26,3 +26,19 @@ func max(a, b int) int {
 	}
 	return b
 }
+
+// divide and conquer approach 将数组一分为二分治处理
+func maxSubArray1(nums []int) int {
+	_,_,res,_ := dac(nums)
+	return res
+}
+
+func dac(nums []int) (Start,End,Max,Sum int){
+	if len(nums) == 1 {
+		return nums[0],nums[0],nums[0],nums[0]
+	} else {
+		start1,end1,max1,sum1 := dac(nums[:len(nums) / 2])
+		start2,end2,max2,sum2 := dac(nums[len(nums) / 2:])
+		return max(start1,sum1 + start2),max(end2,end1 + sum2),max(max(max1,max2),end1 + start2),sum1 + sum2
+	}
+}
