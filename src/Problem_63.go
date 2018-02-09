@@ -17,7 +17,7 @@ Note: m and n will be at most 100.
 
 package main
 
-ffunc uniquePathsWithObstacles(obstacleGrid [][]int) int {
+func uniquePathsWithObstacles(obstacleGrid [][]int) int {
 	width,height := len(obstacleGrid[0]),len(obstacleGrid)
 	dp := make([]int,height + 1)
 	if obstacleGrid[0][0] == 0 {
