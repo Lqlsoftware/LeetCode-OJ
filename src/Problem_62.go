@@ -11,6 +11,7 @@ Note: m and n will be at most 100.
 
 package main
 
+// dp!
 func uniquePaths(m int, n int) int {
 	dp := make([]int,m + 1)
 	dp[1] = 1
@@ -20,4 +21,21 @@ func uniquePaths(m int, n int) int {
 		}
 	}
 	return dp[m]
+}
+
+// math!
+func uniquePaths1(m int, n int) int {
+	if m < n {
+		return uniquePaths1(n,m)
+	} else if n == 1 {
+		return 1
+	}
+	res := m + n - 2
+	for i := res - 1;i >= m;i-- {
+		res *= i
+	}
+	for i := 2;i < n;i++ {
+		res /= i
+	}
+	return res
 }
