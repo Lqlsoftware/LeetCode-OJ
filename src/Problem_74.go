@@ -17,14 +17,14 @@ Given target = 3, return true.
 
 package main
 
-// BS col and row
+// BS col and row (avoids m * n multiplication overflow.)
 func searchMatrix(matrix [][]int, target int) bool {
 	if len(matrix) == 0 || len(matrix[0]) == 0 {
 		return false
 	}
 	start,end := 0,len(matrix) - 1
 	for start <= end {
-		mid := (start + end + 1) / 2
+		mid := (start + end + 1) >> 1
 		if v := matrix[mid][0];v == target {
 			return true
 		} else if v > target {
@@ -51,7 +51,7 @@ func searchMatrix(matrix [][]int, target int) bool {
 	return false
 }
 
-// treat as an array
+// treat as an array (bad cache using)
 func searchMatrix1(matrix [][]int, target int) bool {
 	if len(matrix) == 0 {
 		return false
