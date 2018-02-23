@@ -11,35 +11,30 @@ The array may contain duplicates.
 
 package main
 
-// seems redundant but efficient(maybe not) (8ms)
-func removeDuplicates(nums []int) int {
+func search(nums []int, target int) bool {
 	if len(nums) == 0 {
-		return 0
+		return false
 	}
-	num,counter,k := make([]int,len(nums)),false,0
-	for i := 1;i < len(nums);i++ {
-		if nums[i] == nums[k] {
-			if !counter {
-				k++
-				counter,nums[k] = true,nums[i]
+	left,right,mid := 0, len(nums) - 1,0
+	for left <= right {
+		mid = (left + right) / 2
+		if nums[mid] == target {
+			return true
+		} else if nums[mid] > nums[right] {
+			if nums[mid] > target && nums[left] <= target {
+				right = mid - 1
+			} else {
+				left = mid + 1
+			}
+		} else if nums[mid] < nums[right] {
+			if nums[mid] < target && nums[right] >= target {
+				left = mid + 1
+			} else {
+				right = mid - 1
 			}
 		} else {
-			k++
-			counter,nums[k] = false,nums[i]
+			right--
 		}
 	}
-	nums = num
-	return k + 1
-}
-
-// (12ms)
-func removeDuplicates1(nums []int) int {
-	k := 0
-	for _,v := range nums {
-		if k < 2 || v != nums[k - 2] {
-			nums[k] = v
-			k++
-		}
-	}
-	return k
+	return false
 }
