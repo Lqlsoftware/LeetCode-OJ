@@ -1,12 +1,12 @@
 /*
-Remove Duplicates from Sorted Array II
-Follow up for "Remove Duplicates":
-What if duplicates are allowed at most twice?
-
-For example,
-Given sorted array nums = [1,1,1,2,2,3],
-Your function should return length = 5, with the first five elements of nums being 1, 1, 2, 2 and 3.
-It doesn't matter what you leave beyond the new length.
+Search in Rotated Sorted Array II
+Follow up for "Problem 33: Search in Rotated Sorted Array":
+What if duplicates are allowed?
+Would this affect the run-time complexity? How and why?
+Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
+(i.e., 0 1 2 4 5 6 7 might become 4 5 6 7 0 1 2).
+Write a function to determine if a given target is in the array.
+The array may contain duplicates.
 */
 
 package main
