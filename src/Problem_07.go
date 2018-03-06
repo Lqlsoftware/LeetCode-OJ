@@ -26,11 +26,11 @@ package main
 import "math"
 
 func reverse(x int) int {
-	symbol := (x>>31)<<1 + 1
+	symbol := (x >> 31) << 1 - 1
 	abs := x * symbol
 	res := 0
 	for abs != 0 {
-		res = res*10 + abs%10
+		res = res * 10 + abs % 10
 		abs /= 10
 	}
 	if res > math.MaxInt32 {
