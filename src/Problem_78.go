@@ -59,9 +59,8 @@ func subsets(nums []int) [][]int {
 
 	Time complexity : O(n*2^n) , for every input element loop traverses the whole solution set length i.e. 2^n
  */
-func subsets1(nums []int) [][]int {
-	length := len(nums)
-	total := int(math.Pow(2,float64(length)))
+func subsets(nums []int) [][]int {
+    total := 1 << uint(len(nums))
 	result := make([][]int,total)
 	for i := range nums {
 		for j := 0;j < total;j++ {
