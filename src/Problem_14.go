@@ -7,36 +7,15 @@ Write a function to find the longest common prefix string amongst an array of st
 package main
 
 func longestCommonPrefix(strs []string) string {
-	if len(strs) == 0 || strs == nil {
+	if len(strs) == 0 {
 		return ""
 	}
-
-	// 寻找最短字符串
-	min := 0
-	for i, v := range strs {
-		if len(v) < len(strs[min]) {
-			min = i
-		}
-	}
-	res := []rune(strs[min])
-
-	length := len(res)
-	if length == 0 || strs[0] == "" {
-		return ""
-	}
-
-	// find Common Prefix
-	for _, v := range strs {
-		runes := []rune(v)
-		count := 0
-		for i := 0; i < length; i++ {
-			v := res[i]
-			if v == runes[count] {
-				count++
-			} else {
-				length = count
+	for i,v := range strs[0] {
+		for j := 1;j < len(strs);j++ {
+			if i == len(strs[j]) || strs[j][i] != uint8(v) {
+				return strs[0][0:i]
 			}
 		}
 	}
-	return string(res[:length])
+	return strs[0]
 }
