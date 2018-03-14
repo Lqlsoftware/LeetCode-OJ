@@ -12,7 +12,7 @@ When s3 = "aadbbbaccc", return false.
 
 package main
 
-// dp
+// dp 二维dp化简
 func isInterleave(s1 string, s2 string, s3 string) bool {
 	if len(s1) + len(s2) != len(s3) {
 		return false
