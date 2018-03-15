@@ -15,24 +15,16 @@ func letterCombinations(digits string) []string {
 	if len(digits) == 0 {
 		return []string{}
 	}
-	dict := make(map[string][]string)
-	dict["2"] = []string{"a", "b", "c"}
-	dict["3"] = []string{"d", "e", "f"}
-	dict["4"] = []string{"g", "h", "i"}
-	dict["5"] = []string{"j", "k", "l"}
-	dict["6"] = []string{"m", "n", "o"}
-	dict["7"] = []string{"p", "q", "r", "s"}
-	dict["8"] = []string{"t", "u", "v"}
-	dict["9"] = []string{"w", "x", "y", "z"}
-	res := []string{""}
-	for _, v := range digits {
-		res2 := make([]string, 0)
-		for _, v2 := range dict[string(v)] {
-			for _, v3 := range res {
-				res2 = append(res2, v3+v2)
+	dict,res := []string{"abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"},[]string{""}
+	for _,v := range digits {
+		temp := make([]string,0)
+		for _,v1 := range dict[v - '2'] {
+			v2 := string(v1)
+			for _,v3 := range res {
+				temp = append(temp, v3 + v2)
 			}
 		}
-		res = res2
+		res = temp
 	}
 	return res
 }
