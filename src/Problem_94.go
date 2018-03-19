@@ -50,8 +50,34 @@ func inorderTraversal1(root *TreeNode) []int {
 	return result
 }
 
-// 递归解法
+// Morris Traversal 恢复源二叉树结构
 func inorderTraversal2(root *TreeNode) []int {
+	var result []int
+	var pre *TreeNode
+	for root != nil {
+		if root.Left == nil {
+			result = append(result, root.Val)
+			root = root.Right
+		} else {
+			for pre = root.Left;pre.Right != nil;pre = pre.Right {
+				if pre.Right == root {
+					break
+				}
+			}
+			if pre.Right == nil {
+				pre.Right,root = root,root.Left
+			} else {
+				pre.Right = nil
+				result = append(result, root.Val)
+				root = root.Right
+			}
+		}
+	}
+	return result
+}
+
+// 递归解法
+func inorderTraversal3(root *TreeNode) []int {
 	if root == nil {
 		return []int{}
 	}
