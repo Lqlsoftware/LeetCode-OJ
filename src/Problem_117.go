@@ -22,13 +22,6 @@ After calling your function, the tree should look like:
 
 package main
 
-type TreeLinkNode struct {
-	Val 	int
-	Left	*TreeLinkNode
-	Right	*TreeLinkNode
-	Next	*TreeLinkNode
-}
-
 // 在访问父母的时候将孩子连接起来 下一层从连接的孩子开始访问
 func connect(root *TreeLinkNode) {
 	curr := root
