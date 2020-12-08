@@ -36,7 +36,7 @@ func maxProduct(nums []int) int {
 	return res
 }
 
-// my idot solution: keep a local positive & negetive and update result
+// my idiot solution: keep a local positive & negetive and update result
 func maxProduct(nums []int) int {
 	if len(nums) == 1 {
 		return nums[0]
