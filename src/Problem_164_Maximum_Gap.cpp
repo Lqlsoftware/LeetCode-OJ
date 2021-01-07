@@ -58,7 +58,6 @@ public:
         int max_diff = 0;
         int prev = nums[min], diff;
         for (int i = 0;i < block_num;i++) {
-            cout << block_max[i] << " " << block_min[i] << " " << prev << endl;
             if (block_max[i] == INT_MIN) continue;
             diff = block_min[i] - prev;
             prev = block_max[i];
