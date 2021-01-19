@@ -37,7 +37,7 @@ public:
     int calculateMinimumHP(vector<vector<int>>& dungeon) {
         int m = dungeon.size(), n = dungeon[0].size();
         int dp[m + 1][n + 1]; dp[m][n - 1] = 0;
-        for (int i = 0;i < m - 1;i++) dp[i][n] = INT_MIN;
+        for (int i = 0;i < m;i++) dp[i][n] = INT_MIN;
         for (int i = 0;i < n - 1;i++) dp[m][i] = INT_MIN;
         for (int i = m - 1;i >= 0;i--)
             for (int j = n - 1;j >= 0;j--)
