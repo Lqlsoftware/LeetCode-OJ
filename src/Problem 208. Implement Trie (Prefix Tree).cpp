@@ -1,23 +1,25 @@
 //208. Implement Trie (Prefix Tree)
 
+#include <string>
+
+using namespace std;
+
 class Trie {
 private:
     struct TireNode {
         bool val;
         TireNode* next[26];
 
-        TireNode() {
-            val = false;
+        TireNode() : val(false) {
             memset(next, 0, sizeof(TireNode*) * 26);
+        }
+        ~TireNode() {
+            for (int i = 0;i < 26;i++)
+                if (this->next[i] != nullptr) delete this->next[i];
         }
     };
     
     TireNode *root;
-    
-    void freeNode(TireNode *p) {
-        for (int i = 0;i < 26;i++)
-            if (p->next[i] != nullptr) freeNode(p->next[i]);
-    }
 public:
     /** Initialize your data structure here. */
     Trie() {
@@ -25,7 +27,7 @@ public:
     }
     
     ~Trie() {
-        freeNode(root);
+        delete root;
     }
     
     /** Inserts a word into the trie. */
