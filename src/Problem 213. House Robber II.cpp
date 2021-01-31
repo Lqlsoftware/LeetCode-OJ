@@ -1,5 +1,8 @@
 // 213. House Robber II
 
+#include <vector>
+
+using namespace std;
 // Max (Rob (0 ~ n - 1), Rob (1 ~ n))
 // So that the first and the last house will not be both robbed in optimal solution
 class Solution {
