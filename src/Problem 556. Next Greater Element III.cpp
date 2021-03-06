@@ -4,27 +4,25 @@
 
 using namespace std;
 
+// 找到第一个非递增数字，与前序列的upper_bound交换，再对前序列进行排序
 class Solution {
-private:
-    int nums[10];
-    bool nge(int digits) {
-        if (digits <= 0) return false;
-        if (nge(digits - 1)) return true;
-        int curr = nums[digits];
-        if (curr >= nums[digits - 1]) return false;
-        int *find = upper_bound(nums, nums + digits, curr);
-        // SWAP find & nums[digits]
-        nums[digits] = *find;
-        *find = curr;
-        sort(nums, nums + digits, greater<int>());
-        return true;
-    }
 public:
     int nextGreaterElement(int n) {
-        int digits = -1;
-        for (int curr = n;curr > 0;curr /= 10) nums[++digits] = curr % 10;
-        if (!nge(digits)) return -1;
+        int nums[10];
+        int digits = -1, i = 0;
+        for (;n > 0;n /= 10) nums[++digits] = n % 10;
         
+        // find peak
+        for (i = 1;i <= digits;i++) if (nums[i - 1] > nums[i]) break;
+        if (i == digits + 1) return -1;
+
+        // make new peak
+        int *find = upper_bound(nums, nums + i, nums[i]);
+        int temp = nums[i];
+        nums[i] = *find;
+        *find = temp;
+        sort(nums, nums + i, greater<int>());
+    
         uint64_t ret = 0;
         while (digits >= 0) {
             ret *= 10;
