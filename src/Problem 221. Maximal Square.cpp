@@ -11,7 +11,7 @@ using namespace std;
 // dp[i][j] = min(dp[i - 1][j - 1], dp[i][j - 1], dp[i - 1][j]) + 1
 class Solution {
 public:
-    int maximalSquare(vector<vector<char>>& matrix) {
+    int maximalSquare(vector< vector<char> > & matrix) {
         int ret, m = matrix.size(), n = matrix[0].size();
         vector<int> dp(n, 0);
         for (int i = 0;i < m;i++) {
