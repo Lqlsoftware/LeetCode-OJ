@@ -27,17 +27,34 @@ using namespace std;
 
 class Solution {
 public:
-    void rotate(vector<int>& nums, int k) {
-        k = k % nums.size();
-        vector<int> ret(nums.end() - k, nums.end());
-        for (int i = 0;i < nums.size() - k;i++)
-            ret.push_back(nums[i]);
-        nums = ret;
+    uint32_t reverseBits(uint32_t n) {
+        uint32_t ret = 0;
+        for (int i = 0;i < 32;i++) {
+            ret <<= 1;
+            ret += n & 1;
+            n   >>= 1;
+        }
+        return ret;
+    }
+};
+
+class Solution2 {
+private:
+    uint8_t map[16] = {0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 13, 3, 11, 7, 15};
+public:
+    uint32_t reverseBits(uint32_t n) {
+        uint32_t ret = 0;
+        for (int i = 0;i < 8;i++) {
+            ret <<= 4;
+            ret += map[n & 15];
+            n   >>= 4;
+        }
+        return ret;
     }
 };
 
 // Reverse 4 byte (3 bit op to reverse a byte)
-class Solution2 {
+class Solution3 {
 public:
     uint32_t reverseByte(uint32_t byte, map<uint32_t, uint32_t> cache) {
         if (cache.find(byte) != cache.end()) {
