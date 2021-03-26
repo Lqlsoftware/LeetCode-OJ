@@ -1,6 +1,7 @@
 // 561. Array Partition I
 
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
